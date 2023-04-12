@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Josefin+Sans">
+    <link rel="stylesheet" href="./style.css">
+    <title>Todo app</title>
+</head>
+<body background="">
+    <div class="upper-half">
+        <div class="todo-bar">
+            <h1>TODO</h1>
+            <img src="C:\Users\ADMIN\Desktop\amalitech project\images\icon-sun.svg" alt="sun icon">
+   
+        </div>
+        
+        <form action="">
+            <input type="checkbox">
+            <input type="text" placeholder="currently typing" class="textbox">
+        </form>
+        <div class="space"></div>
+        
+        <div class="container">
+        <div class="list">
+            <label class="checked">
+                <input type="checkbox">
+                <span>Complete online JavaScript course</span>
+            </label>
+
+            <label>
+                <input type="checkbox" class="checkbox">
+                <span>Jog around the park 3x</span>
+            </label>
+
+            <label>
+                <input type="checkbox">
+                <span>10 minutes meditation</span>
+            </label>
+
+            <label>
+                <input type="checkbox">read for 1 hour
+                <span></span>
+            </label>
+
+            <label>
+                <input type="checkbox">Pick up groceries
+                <span></span>
+            </label>
+
+            <label>
+                <input type="checkbox">Complete Todo App on Frontend Mento
+                <span></span>
+            </label>
+
+            <label class="span">
+                5 item left
+                All
+                Active
+                Completed
+                Clear Completed
+            </label>
+        </div>
+    </div>
+    </div>
+    
+    
+    
+    
+</body>
+</html>
