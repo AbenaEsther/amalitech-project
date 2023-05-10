@@ -1,4 +1,4 @@
-*{
+ *{
   padding: 0;
   margin: 0; 
   box-sizing: border-box; 
@@ -25,7 +25,6 @@
   border-bottom: 1px solid;
   padding: 20px;
   color: hsl(237, 14%, 26%);
-  /*#ccc;*/
 }
 
 ul{
@@ -36,7 +35,8 @@ ul{
 }
 
 li{
-  padding: 5px 0 30px 0;
+  display: flex;
+  justify-content: space-between;
   cursor: pointer;
   position: relative;
   transition: 0.5s;
@@ -59,7 +59,9 @@ li input:hover{
 .first-list{
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-}
+  display: flex;
+  justify-content: space-between;
+ }
 
 .last-li{
   font-weight: 400;
@@ -129,7 +131,6 @@ span{
   padding-left: 30px;
 }
 
-
 .todo-bar{
   background: transparent;
   display: flex;
@@ -154,14 +155,12 @@ form{
   border:1px solid; color: hsl(280,87%, 65%);
 }
 
-
 form input[type="checkbox"]{
   position: absolute;
   margin-top: 17px;
   margin-left: 20px;
   
 }
-
 
 .textbox{
   outline: none;
@@ -196,6 +195,20 @@ form input[type="checkbox"]{
  visibility: hidden;
  padding-left: 500px;
  color: hsl(233, 14%, 35%);
+}
+
+#first-button{
+  margin-right: 7px;
+  visibility: hidden;
+}
+
+span:hover + #first-button{
+  visibility: visible;
+}
+
+img{
+  width: 15px;
+  height: 15px;
 }
 
 span:hover + .delete{
@@ -289,5 +302,4 @@ body{
   .textbox{
     font-size: 13px;
   }
-  
 } 
