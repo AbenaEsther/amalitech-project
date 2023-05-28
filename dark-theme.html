@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-    <link rel="stylesheet" href="https://fonts.google.com/specimen/Josefin+San">
-    <link rel="stylesheet" href="./dark-theme.css">
+    <!-- <link rel="stylesheet" href="https://fonts.google.com/specimen/Josefin+San"> -->
+    <link rel="stylesheet" href="./dark-theme.css" id="theme-style">
     <title>Todo app</title>
 </head>
 <body background="">
@@ -15,75 +15,78 @@
         <div class="big-container">
         <div class="todo-bar">
             <h1>TODO</h1>
-            <img src="C:\Users\ADMIN\Desktop\amalitech project\images\icon-sun.svg" alt="sun icon">
+            <button id="theme-toggle" onclick="toggleTheme()"><img src="C:\Users\ADMIN\Desktop\amalitech project\images\icon-sun.svg" alt="sun icon"></button>
     
         </div>
         
-        <form action="">
+        <form action="" id="todo-form">
             <input type="checkbox" class="form-checkbox">
-            <input type="text" placeholder="Create a new todo" class="textbox">
+            <input type="text" placeholder="Create a new todo" class="textbox" id="new-todo-input">
         </form>
         <div class="space"></div>
     </div>
         
         <div class="container">
-        <ul class="list">
-            <li class="first-list" id="li ">
+        <ul class="list" id="todo-list">
+            <li id="li" draggable="true">
                 <input type="checkbox">
                 <span>Complete online JavaScript course</span>
-               <button id="first-button" ><img src=file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg alt="cross icon"></button>
+               <button class="delete"><img src=file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg alt="cross icon"></button>
             </li>
 
-            <li id="li">
+            <li id="li" draggable="true">
                 <input type="checkbox" class="checkbox">
                 <span>Jog around the park 3x</span>
                 <button class="delete"><img src=file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg alt="cross icon"></button>
             </li>
 
-            <li id="li">
+            <li id="li" draggable="true">
                 <input type="checkbox">
                 <span>10 minutes meditation</span>
                 <button class="delete"><img src=file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg alt="cross icon"></button>
             </li>
 
-            <li id="li">
-                <input type="checkbox">
+            <li id="li" draggable="true">
+                <input type="checkbox" draggable="true">
                 <span>read for 1 hour</span>
                 <button class="delete"><img src=file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg alt="cross icon"></b utton>
             </li>
 
-            <li id="li">
-                <input type="checkbox">
+            <li id="li" draggable="true">
+                <input type="checkbox" draggable="true">
                 <span>Pick up groceries</span>
                 <button class="delete"><img src=file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg alt="cross icon"></button>
             </li>
 
-            <li id="li">
+            <li id="li" draggable="true">
                 <input type="checkbox">
                 <span>Complete Todo App on Frontend Mentor</span>
                 <button class="delete"><img src="file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg" alt="cross icon"></button>
             </li>
-
+     <ul> 
             <li class="last-li">
-                <button>5 items left</button>
-                <div id="inner-button"> 
-                <button class="all">All</button>
-                <button>Active</button>
-                <button>Completed</button>
-                </div>
-                <button>Clear Completed</button>
-            </li>
+                <button id="items-left">6 items left</button>
+             <div id="inner-button"> 
+                <button id="all" class="filter-button" data-filter="all">All</button>
+                <button class="filter-button" data-filter="active">Active</button>
+                <button class="filter-button" data-filter="completed">Completed</button>
+            </div>
+                <button id="clear-completed">Clear Completed</button>
+        </li>
 
             <li id="lower-div">
-                <button class="all">All</button>
-                <button>Active</button>
-                <button>Completed</button>
+                <button id="all" class="filter-button" data-filter="all">All</button>
+                <button id="active" class="filter-button" data-filter="active">Active</button>
+                <button id="completed" class="filter-button" data-filter="completed">Completed</button>
             </li>
             <div class="footer">
                 <p>Drag and drop to reorder</p>
             </div>
         </ul>
+        </ul>
     </div>
-</div>   
+</div> 
+
+<script src="./todo.js"></script>
 </body>
 </html>
