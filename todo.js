@@ -10,13 +10,17 @@ const secondUl = document.getElementById('second-ul');
 function toggleTheme() {
     const body = document.body;
     const themeStyle = document.getElementById('theme-style');
+    const toggleIcon = document.getElementById('theme-toggle-icon');
 
     if (body.classList.contains('dark-theme')) {
         body.classList.remove('dark-theme');
         themeStyle.href = './light-theme.css'; // Path to your light theme CSS file
+        toggleIcon.src = 'C:/Users/ADMIN/Downloads/todo-app-main/todo-app-main/images/icon-moon.svg'; // Path to your moon icon
     } else {
         body.classList.add('dark-theme');
         themeStyle.href = './dark-theme.css'; // Path to your dark theme CSS file
+        toggleIcon.src = 'C:/Users/ADMIN/Downloads/todo-app-main/todo-app-main/images/icon-sun.svg'; // Path to your sun icon
+
     }
 }
 
