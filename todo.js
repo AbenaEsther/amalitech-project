@@ -16,12 +16,12 @@ function toggleTheme() {
         body.classList.add('light-theme'); // Adding 'light-theme' class
         body.classList.remove('dark-theme');
         themeStyle.href = './light-theme.css'; // Path to light theme CSS file
-        toggleIcon.src = 'C:/Users/ADMIN/Downloads/todo-app-main/todo-app-main/images/icon-moon.svg'; // Path to moon icon
+        toggleIcon.src = 'images/icon-moon.svg'; // Path to moon icon
     } else {
         body.classList.remove('light-theme'); // Removing 'light-theme' class
         body.classList.add('dark-theme');
         themeStyle.href = './dark-theme.css'; // Path to dark theme CSS file
-        toggleIcon.src = 'C:/Users/ADMIN/Downloads/todo-app-main/todo-app-main/images/icon-sun.svg'; // Path to sun icon
+        toggleIcon.src = 'images/icon-sun.svg'; // Path to sun icon
 
     }
 }
