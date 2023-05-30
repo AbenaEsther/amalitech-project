@@ -1,4 +1,4 @@
-// Get necessary DOM elements
+// Getting necessary DOM elements
 const todoList = document.getElementById('todo-list');
 const newTodoInput = document.getElementById('new-todo-input');
 const itemsLeftButton = document.getElementById('items-left');
@@ -7,27 +7,29 @@ const filterButtons = document.getElementsByClassName('filter-button');
 const secondUl = document.getElementById('second-ul');
 
 //dark and light mode
-function toggleTheme() {
-    const body = document.body;
-    const themeStyle = document.getElementById('theme-style');
-    const toggleIcon = document.getElementById('theme-toggle-icon');
+const body = document.body;
+const themeStyle = document.getElementById('theme-style');
+const toggleIcon = document.getElementById('theme-toggle-icon');
 
-    if (body.classList.contains('dark-theme')) {
+function toggleTheme() {
+    if (body.classList.contains('dark-theme')) { 
+        body.classList.add('light-theme'); // Adding 'light-theme' class
         body.classList.remove('dark-theme');
-        themeStyle.href = './light-theme.css'; // Path to your light theme CSS file
-        toggleIcon.src = 'C:/Users/ADMIN/Downloads/todo-app-main/todo-app-main/images/icon-moon.svg'; // Path to your moon icon
+        themeStyle.href = './light-theme.css'; // Path to light theme CSS file
+        toggleIcon.src = 'C:/Users/ADMIN/Downloads/todo-app-main/todo-app-main/images/icon-moon.svg'; // Path to moon icon
     } else {
+        body.classList.remove('light-theme'); // Removing 'light-theme' class
         body.classList.add('dark-theme');
-        themeStyle.href = './dark-theme.css'; // Path to your dark theme CSS file
-        toggleIcon.src = 'C:/Users/ADMIN/Downloads/todo-app-main/todo-app-main/images/icon-sun.svg'; // Path to your sun icon
+        themeStyle.href = './dark-theme.css'; // Path to dark theme CSS file
+        toggleIcon.src = 'C:/Users/ADMIN/Downloads/todo-app-main/todo-app-main/images/icon-sun.svg'; // Path to sun icon
 
     }
 }
 
-// Create a counter for keeping track of items left
+// Creating a counter for keeping track of items left
 let itemsLeftCount = todoList.children.length;
 
-// Add event listener for the new todo input
+// Adding event listener for the new todo input
 newTodoInput.addEventListener('keydown', function(event) {
     if (event.key === 'Enter' && newTodoInput.value.trim() !== '') {
         event.preventDefault();
@@ -49,7 +51,7 @@ function addTodoItem(todoText) {
     itemsLeftCount++;
     updateItemsLeftCount();
 
-    // Add event listener to the delete button of the newly added todo item
+    // Adding event listener to the delete button of the newly added todo item
     const deleteButton = todoItem.querySelector('.delete');
     deleteButton.addEventListener('click', function() {
         todoItem.remove();
@@ -75,11 +77,6 @@ todoList.addEventListener('click', function(event) {
         updateItemsLeftCount();
     }
 });
-
-// Function to update the items left count
-// function updateItemsLeftCount() {
-    // itemsLeftButton.textContent = `${itemsLeftCount} items left`;
-// }
 
 // Add event listener for the clear completed button
 clearCompletedButton.addEventListener('click', function() {
@@ -155,19 +152,6 @@ todoList.addEventListener('dragend', function(event) {
 // Initial filtering of the todo list
 filterTodoList('all');
 
-//begin
-// Get the cross-icon buttons
-// const deleteButtons = document.getElementsByClassName('delete');
-// Add event listeners to the delete buttons
-// Array.from(deleteButtons).forEach(function(button) {
-    // button.addEventListener('click', function() {
-        // const listItem = button.parentElement;
-        // listItem.remove();
-    // });
-// });
-//end
-
-
 // Function to update the items left count
 function updateItemsLeftCount() {
     const todoItems = document.querySelectorAll('.list > li:not(#lower-div)');
@@ -175,25 +159,6 @@ function updateItemsLeftCount() {
     const itemsLeft = Array.from(todoItems).filter(item => !item.classList.contains('completed')).length;
     itemsLeftButton.textContent = `${itemsLeft} items left`;
 }
-
-//todoList.addEventListener('click', function(event) {
-  //  const target = event.target;
-    //if (target.tagName === 'INPUT') {
-        // Toggle completed class and update itemsLeftCount
-        // ...
-    //} //else if (target.className === 'delete') {
-        //target.parentNode.remove();
-        //updateItemsLeftCount();
-
-        //const todoItems = document.querySelectorAll('.list > li:not(#lower-div)');
-        //if (todoItems.length === 0) {
-        //    const secondaryList = document.querySelector('.secondary-list');
-          //  secondaryList.remove();
-        //}
-    //}
-//}
-//);
-
 
 // Add event listener for the new todo input
 newTodoInput.addEventListener('keydown', function (event) {

@@ -52,7 +52,6 @@ li{
   justify-content: space-between;
   cursor: pointer;
   position: relative;
-  /* transition: 0.5s; */
   background-color: hsl(235, 24%, 19%);
   padding: 10px 0 10px 0;
  }
@@ -68,10 +67,6 @@ li{
 #lower-div{
    display: none;
 }
-
-/* .last-li span{ */
-  /* font-size: 15px; */
-/* }  */
 
 li input:hover{
   border:1px solid; color: hsl(280,87%, 65%);  
@@ -214,11 +209,9 @@ form input[type="checkbox"]{
  top: 50%;
  right: 8px;
  transform: translateY(-50%);
- /* transform: translateX(-50%); */
  cursor: pointer;
  background: transparent; 
  border: none;
- /* display: none; */
  width: 15px;
  color: hsl(233, 14%, 35%);
 }
@@ -228,18 +221,10 @@ img{
   height: 15px;
 }
 
-/*span:hover + .delete{
-  visibility: visible;
-  background: transparent;
-  border: none;
-  font-size: 40px;
-} */
-
 li:hover .delete{
   display: inline;
   color: hsl(233, 14%, 35%)
 }
-/* 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 */
 
 .footer{
   position: relative;
