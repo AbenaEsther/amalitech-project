@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-    <link rel="stylesheet" href="https://fonts.google.com/specimen/Josefin+San">
-    <link rel="stylesheet" href="./light-theme.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap">
+    <link rel="stylesheet" href="./light-theme.css" id="theme-style">
     <title>Todo app</title>
 </head>
 <body background="" >
@@ -15,7 +15,7 @@
         <div class="big-container">
         <div class="todo-bar">
             <h1>TODO</h1>
-            <button><img src="C:/Users/ADMIN/Downloads/todo-app-main/todo-app-main/images/icon-moon.svg" alt="sun icon"></button>
+            <button id="theme-toggle" onclick="toggleTheme()"> <img src = "images/icon-moon.svg" alt="moon icon"></button>
     
         </div>
         
@@ -31,37 +31,37 @@
             <li class="first-list" id="li">
                 <input type="checkbox">
                 <span>Complete online JavaScript course</span>
-               <button class="delete"><img src="file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg" alt="cross icon"></button> 
+               <button class="delete"><img src="images/icon-cross.svg" alt="cross icon"></button> 
             </li>
 
-            <li id="li">
+            <li clss="li">
                 <input type="checkbox">
                 <span>Jog around the park 3x</span>
-                <button class="delete"><img src="file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg" alt="cross icon"></button>
+                <button class="delete"><img src="images/icon-cross.svg" alt="cross icon"></button>
             </li>
 
-            <li id="li">
+            <li class="li">
                 <input type="checkbox">
                 <span>10 minutes meditation</span>
-                <button class="delete"><img src="file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg" alt="cross icon"></button>
+                <button class="delete"><img src="images/icon-cross.svg" alt="cross icon"></button>
             </li>
 
-            <li id="li">
+            <li class="li">
                 <input type="checkbox">
                 <span>read for 1 hour</span>
-                <button class="delete"><img src="file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg" alt="cross icon"></button>
+                <button class="delete"><img src="images/icon-cross.svg" alt="cross icon"></button>
             </li>
 
-            <li id="li">
+            <li class="li">
                 <input type="checkbox">
                 <span>Pick up groceries</span>
-                <button class="delete"><img src="file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg" alt="cross icon"></button>
+                <button class="delete"><img src="images/icon-cross.svg" alt="cross icon"></button>
             </li>
 
-            <li id="li">
+            <li class="li">
                 <input type="checkbox">
                 <span>Complete Todo App on Frontend Mentor</span>
-                <button class="delete"><img src="file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg" alt="cross icon"></button>
+                <button class="delete"><img src="images/icon-cross.svg" alt="cross icon"></button>
             </li>
 
             <li class="last-li">
@@ -86,5 +86,7 @@
         </ul>
     </div>
 </div>  
+
+<script src="./todo.js"></script>
 </body>
 </html>

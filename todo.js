@@ -1,10 +1,12 @@
- // Get necessary DOM elements
+// Get necessary DOM elements
 const todoList = document.getElementById('todo-list');
 const newTodoInput = document.getElementById('new-todo-input');
 const itemsLeftButton = document.getElementById('items-left');
 const clearCompletedButton = document.getElementById('clear-completed');
 const filterButtons = document.getElementsByClassName('filter-button');
+const secondUl = document.getElementById('second-ul');
 
+//dark and light mode
 function toggleTheme() {
     const body = document.body;
     const themeStyle = document.getElementById('theme-style');
@@ -36,10 +38,10 @@ function addTodoItem(todoText) {
     todoItem.innerHTML = `
         <input type="checkbox">
         <span>${todoText}</span>
-        <button class="delete"><img src="file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg" alt="cross icon"></button>
+        <button class="delete"><img src="images/icon-cross.svg" alt="cross icon"></button>
     `;
     todoItem.classList.add('todo-item');
-    todoList.appendChild(todoItem, todoList.lastElementChild);
+    todoList.insertBefore(todoItem, todoList.lastElementChild);
     itemsLeftCount++;
     updateItemsLeftCount();
 
@@ -71,9 +73,9 @@ todoList.addEventListener('click', function(event) {
 });
 
 // Function to update the items left count
-function updateItemsLeftCount() {
-    itemsLeftButton.textContent = `${itemsLeftCount} items left`;
-}
+// function updateItemsLeftCount() {
+    // itemsLeftButton.textContent = `${itemsLeftCount} items left`;
+// }
 
 // Add event listener for the clear completed button
 clearCompletedButton.addEventListener('click', function() {
@@ -102,7 +104,8 @@ function filterTodoList(filter) {
             item.style.display = 'none';
         } else if (filter === 'completed' && !item.classList.contains('completed')) {
             item.style.display = 'none';
-        }
+            secondUl.style.display = 'block';
+         }
     });
 }
 
@@ -161,3 +164,49 @@ filterTodoList('all');
 //end
 
 
+// Function to update the items left count
+function updateItemsLeftCount() {
+    const todoItems = document.querySelectorAll('.list > li:not(#lower-div)');
+    const itemsLeftButton = document.getElementById('items-left');
+    const itemsLeft = Array.from(todoItems).filter(item => !item.classList.contains('completed')).length;
+    itemsLeftButton.textContent = `${itemsLeft} items left`;
+}
+
+//todoList.addEventListener('click', function(event) {
+  //  const target = event.target;
+    //if (target.tagName === 'INPUT') {
+        // Toggle completed class and update itemsLeftCount
+        // ...
+    //} //else if (target.className === 'delete') {
+        //target.parentNode.remove();
+        //updateItemsLeftCount();
+
+        //const todoItems = document.querySelectorAll('.list > li:not(#lower-div)');
+        //if (todoItems.length === 0) {
+        //    const secondaryList = document.querySelector('.secondary-list');
+          //  secondaryList.remove();
+        //}
+    //}
+//}
+//);
+
+
+// Add event listener for the new todo input
+newTodoInput.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter' && newTodoInput.value.trim() !== '') {
+      event.preventDefault();
+      addTodoItem(newTodoInput.value.trim());
+      newTodoInput.value = '';
+    }
+  });
+  
+  // Add event listener for the form checkbox
+  const formCheckbox = document.getElementById('form-checkbox');
+  formCheckbox.addEventListener('change', function () {
+    if (formCheckbox.checked && newTodoInput.value.trim() !== '') {
+      addTodoItem(newTodoInput.value.trim());
+      newTodoInput.value = '';
+      //formCheckbox.checked = false;
+    }
+  });
+  

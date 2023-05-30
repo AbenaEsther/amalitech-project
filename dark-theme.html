@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-    <!-- <link rel="stylesheet" href="https://fonts.google.com/specimen/Josefin+San"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap"> 
     <link rel="stylesheet" href="./dark-theme.css" id="theme-style">
     <title>Todo app</title>
 </head>
@@ -15,12 +15,12 @@
         <div class="big-container">
         <div class="todo-bar">
             <h1>TODO</h1>
-            <button id="theme-toggle" onclick="toggleTheme()"><img src="C:\Users\ADMIN\Desktop\amalitech project\images\icon-sun.svg" alt="sun icon"></button>
+            <button id="theme-toggle" onclick="toggleTheme()"><img src="images/icon-sun.svg" alt="sun icon"></button>
     
         </div>
         
         <form action="" id="todo-form">
-            <input type="checkbox" class="form-checkbox">
+            <input type="checkbox" class="form-checkbox" id="form-checkbox">
             <input type="text" placeholder="Create a new todo" class="textbox" id="new-todo-input">
         </form>
         <div class="space"></div>
@@ -28,42 +28,42 @@
         
         <div class="container">
         <ul class="list" id="todo-list">
-            <li id="li" draggable="true">
+            <li class="li" draggable="true">
                 <input type="checkbox">
                 <span>Complete online JavaScript course</span>
-               <button class="delete"><img src=file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg alt="cross icon"></button>
+               <button class="delete"><img src="images/icon-cross.svg" alt="cross icon"></button>
             </li>
 
-            <li id="li" draggable="true">
+            <li class="li" draggable="true">
                 <input type="checkbox" class="checkbox">
                 <span>Jog around the park 3x</span>
-                <button class="delete"><img src=file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg alt="cross icon"></button>
+                <button class="delete"><img src= "images/icon-cross.svg" alt="cross icon"></button>
             </li>
 
-            <li id="li" draggable="true">
+            <li class="li" draggable="true">
                 <input type="checkbox">
                 <span>10 minutes meditation</span>
-                <button class="delete"><img src=file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg alt="cross icon"></button>
+                <button class="delete"><img src= "images/icon-cross.svg" alt="cross icon"></button>
             </li>
 
-            <li id="li" draggable="true">
+            <li class="li" draggable="true">
                 <input type="checkbox" draggable="true">
                 <span>read for 1 hour</span>
-                <button class="delete"><img src=file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg alt="cross icon"></b utton>
+                <button class="delete"><img src= "images/icon-cross.svg" alt="cross icon"></button>
             </li>
 
-            <li id="li" draggable="true">
+            <li class="li" draggable="true">
                 <input type="checkbox" draggable="true">
                 <span>Pick up groceries</span>
-                <button class="delete"><img src=file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg alt="cross icon"></button>
+                <button class="delete"><img src= "images/icon-cross.svg" alt="cross icon"></button>
             </li>
 
-            <li id="li" draggable="true">
+            <li class="li" draggable="true">
                 <input type="checkbox">
                 <span>Complete Todo App on Frontend Mentor</span>
-                <button class="delete"><img src="file:///C:/Users/ADMIN/Desktop/amalitech%20project/images/icon-cross.svg" alt="cross icon"></button>
+                <button class="delete"><img src="images/icon-cross.svg" alt="cross icon"></button>
             </li>
-     <ul> 
+     <ul id="second-ul"> 
             <li class="last-li">
                 <button id="items-left">6 items left</button>
              <div id="inner-button"> 
