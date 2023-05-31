@@ -12,7 +12,7 @@
 }
 
 .upper-half{
-    background: url("images/bg-desktop-light.jpg");
+    background: url("../images/bg-desktop-light.jpg");
     height: 300px;
 }
 
@@ -54,17 +54,23 @@ li{
     justify-content: space-between;
     cursor: pointer;
     position: relative;
-    /* transition: 0.5s; */
     background-color:  white;
     padding: 10px 0 10px 0;
  }
+
+   /* css styling for  new todo to have same styling as existing todos */
+.todo-item {
+  padding: 20px;
+  border-top: 1px solid;
+  color: hsl(236, 33%, 92%);
+}
 
   .last-li span{
     font-size: 15px;
   }
 
 li input:hover{
-    border:1px solid; color: hsl(280,87%, 65%);  
+    border:1px solid; color: hsl(281, 30%, 34%);  
     }
 
  .first-list{
@@ -239,9 +245,9 @@ body{
   }
 }
 
-@media screen and  ( max-width: 375px){
+@media screen and  ( max-width: 1400px){
   .upper-half{
-    background: url('images/bg-mobile-light.jpg');
+    background: url('../images/bg-mobile-light.jpg');
     height: 200px;
   }
 

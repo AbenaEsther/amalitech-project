@@ -12,7 +12,7 @@
 }
 
 .upper-half{
-  background: url("images/bg-desktop-dark.jpg");
+  background: url("../images/bg-desktop-dark.jpg");
   height: 300px;
 }
 
@@ -236,7 +236,7 @@ li:hover .delete{
 
 body{
   background-color: hsl(235, 21%, 11%);
-}
+}                                          
 
 @media screen and (min-width:1440px) {
   .main-container{
@@ -246,9 +246,9 @@ body{
   
 }
 
-@media screen and (max-width:375px) {
+@media screen and (max-width:1400px) {
   .upper-half{
-    background: url('images/bg-mobile-dark.jpg');
+    background: url('../images/bg-mobile-dark.jpg');
     height: 200px;
   }
   .main-container{
@@ -278,7 +278,7 @@ body{
     justify-content: space-between;
     margin-bottom: 10px;
   }
-  .last-li button{
+  .last-li button{ 
     color: hsl(236, 9%, 61%);
   }
   

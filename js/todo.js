@@ -15,12 +15,12 @@ function toggleTheme() {
     if (body.classList.contains('dark-theme')) { 
         body.classList.add('light-theme'); // Adding 'light-theme' class
         body.classList.remove('dark-theme');
-        themeStyle.href = './light-theme.css'; // Path to light theme CSS file
+        themeStyle.href = 'css/light-theme.css'; // Path to light theme CSS file
         toggleIcon.src = 'images/icon-moon.svg'; // Path to moon icon
     } else {
         body.classList.remove('light-theme'); // Removing 'light-theme' class
         body.classList.add('dark-theme');
-        themeStyle.href = './dark-theme.css'; // Path to dark theme CSS file
+        themeStyle.href = 'css/dark-theme.css'; // Path to dark theme CSS file
         toggleIcon.src = 'images/icon-sun.svg'; // Path to sun icon
 
     }
@@ -175,7 +175,6 @@ newTodoInput.addEventListener('keydown', function (event) {
     if (formCheckbox.checked && newTodoInput.value.trim() !== '') {
       addTodoItem(newTodoInput.value.trim());
       newTodoInput.value = '';
-      //formCheckbox.checked = false;
     }
   });
   
