@@ -245,7 +245,7 @@ body{
   }
 }
 
-@media screen and  ( max-width: 1400px){
+@media screen and  ( max-width: 1282px){
   .upper-half{
     background: url('../images/bg-mobile-light.jpg');
     height: 200px;
