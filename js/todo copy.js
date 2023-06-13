@@ -6,49 +6,24 @@ const clearCompletedButton = document.getElementById('clear-completed');
 const filterButtons = document.getElementsByClassName('filter-button');
 const secondUl = document.getElementById('second-ul');
 
-var todos = []
-
-const savedData = localStorage.getItem('todos');
-
+const savedData = localStorage.getItem('todoData');
 if (savedData) {
-    todos = JSON.parse(savedData||[]);
-    
+    todoList.innerHTML = savedData;
 }
 
 // Save the todo list data in the local storage
 function saveData() {
     //ne = document.getElementById('todo-list');
-    localStorage.setItem('todos', JSON.stringify(todos));
-    showList()
-    updateItemsCount()
-}
-
-function toggleCompleted(id){
-    todos = todos.map((todoItem)=>{
-        return todoItem?.id === id ? {
-            ...todoItem,
-            completed: !todoItem.completed
-        } : todoItem
-    })
-    saveData()
-}
-
-function deleteItem(id){
-    todos = todos.filter((todoItem)=>{
-        return todoItem?.id !== id
-    })
-    
-    saveData()
+    console.log("saved", todoList.innerHTML)
+    localStorage.setItem('todoData', todoList.innerHTML);
 }
 
 function showList() {
-    todoList.innerHTML= todos.map((todo)=>`
-        <li id="item-${todo.id}" class="li ${todo.completed ? 'completed' : ''}" draggable="true">
-            <input onclick="toggleCompleted(${todo.id})" ${todo.completed ? 'checked':''} type="checkbox">
-            <span  onclick="toggleCompleted(${todo.id})">${todo.title}</span>
-            <button  onclick="deleteItem(${todo.id})" class="delete"><img src="images/icon-cross.svg" alt="cross icon"></button>
-        </li>   
-    `).join("")
+    alert(localStorage.getItem('todoData'))
+    saveData = localStorage.getItem('todoData');
+    if (savedData) {
+        todoList.innerHTML = savedData;
+}
 }
 
 // Add event listeners to save data when the list changes
@@ -56,14 +31,7 @@ todoList.addEventListener('click', saveData);
 todoList.addEventListener('dragend', saveData);
 
 // Add event listener to save data when the page is unloaded
-window.addEventListener('load', function(){
-    const savedTheme = localStorage.getItem('theme')
-    if(savedTheme){
-        setTheme(savedTheme)
-    }
-    updateItemsCount()
-    showList()
-});
+window.addEventListener('load', showList);
 
 
 //dark and light mode
@@ -71,8 +39,8 @@ const body = document.body;
 const themeStyle = document.getElementById('theme-style');
 const toggleIcon = document.getElementById('theme-toggle-icon');
 
-function setTheme(name){
-    if (name === "light-theme") { 
+function toggleTheme() {
+    if (body.classList.contains('dark-theme')) { 
         body.classList.add('light-theme'); // Adding 'light-theme' class
         body.classList.remove('dark-theme');
         themeStyle.href = 'css/light-theme.css'; // Path to light theme CSS file
@@ -82,19 +50,12 @@ function setTheme(name){
         body.classList.add('dark-theme');
         themeStyle.href = 'css/dark-theme.css'; // Path to dark theme CSS file
         toggleIcon.src = 'images/icon-sun.svg'; // Path to sun icon
-    }
-    localStorage.setItem("theme", name)
-}
 
-function toggleTheme() {
-    if (body.classList.contains('dark-theme')) { 
-        setTheme('light-theme');
-    } else {
-        setTheme("dark-theme")
     }
 }
 
 // Creating a counter for keeping track of items left
+let itemsLeftCount = todoList.children.length;
 
 // Adding event listener for the new todo input
 newTodoInput.addEventListener('keydown', function(event) {
@@ -107,22 +68,54 @@ newTodoInput.addEventListener('keydown', function(event) {
 
 // Function to add a new todo item
 function addTodoItem(todoText) {
-    todos.push({
-        id: Date.now(),
-        title: todoText,
-        completed: false
-    })
+    const todoItem = document.createElement('li');
+    todoItem.innerHTML = `
+        <input type="checkbox">
+        <span>${todoText}</span>
+        <button class="delete"><img src="images/icon-cross.svg" alt="cross icon"></button>
+    `;
+    todoItem.classList.add('todo-item');
+    todoList.insertBefore(todoItem, todoList.lastElementChild);
+    itemsLeftCount++;
+    updateItemsLeftCount();
 
-    ;
+    // Adding event listener to the delete button of the newly added todo item
+    const deleteButton = todoItem.querySelector('.delete');
+    deleteButton.addEventListener('click', function() {
+        todoItem.remove();
+        itemsLeftCount--;
+        updateItemsLeftCount();
+    });
     saveData();
 }
 
+// Add event listener for the todo list
+todoList.addEventListener('click', function(event) {
+    const target = event.target;
+    if (target.tagName === 'INPUT') {
+        target.parentNode.classList.toggle('completed');
+        if (target.checked) {
+            itemsLeftCount--;
+        } else {
+            itemsLeftCount++;
+        }
+        updateItemsLeftCount();
+    } else if (target.tagName === 'IMG') {
+        target.parentNode.parentNode.remove();
+        itemsLeftCount--;
+        updateItemsLeftCount();
+        saveData();
+    }
+});
+
 // Add event listener for the clear completed button
 clearCompletedButton.addEventListener('click', function() {
-    todos = todos.filter(function(todoItem){
-        return todoItem.completed === false
-    }) 
-    ;
+    const completedItems = todoList.getElementsByClassName('completed');
+    while (completedItems.length > 0) {
+        completedItems[0].remove();
+        itemsLeftCount--;
+    }
+    updateItemsLeftCount();
     saveData();
 });
 
@@ -147,45 +140,33 @@ function filterTodoList(filter) {
          }
     });
 }
-let draggedIndex = null
-console.log("start")
-// Add drag and drop functionality to reorder items
-// 
 
-// Add dragstart event listener to each todo item
+// Add drag and drop functionality to reorder items
+let dragItem = null;
+
 todoList.addEventListener('dragstart', function(event) {
-    draggedIndex = Array.from(todoList.children).findIndex((el, i)=>el.id === event.target.id)
+    dragItem = event.target;
+    setTimeout(function() {
+        dragItem.style.display = 'none';
+    }, 0);
 });
 
-// Add dragover event listener to the todo list
 todoList.addEventListener('dragover', function(event) {
     event.preventDefault();
+    const targetItem = getDragAfterElement(todoList, event.clientY);
+    if (targetItem === null) {
+        todoList.appendChild(dragItem);
+    } else {
+        todoList.insertBefore(dragItem, targetItem);
+    }
 });
 
-// Add dragend event listener to each todo item
-todoList.addEventListener('drop', function(event) {
-    event.preventDefault();
-    var targetIndex = Array.from(todoList.children).findIndex((el, i)=>el.id === event.target.id)
-    targetIndex = targetIndex<0 ? (todos.length-1) : targetIndex;
-    // Swap the positions of todos in the array
-    const temp = todos[draggedIndex];
-    todos[draggedIndex] = todos[targetIndex];
-    todos[targetIndex] = temp;
-
-    // Re-render the todo list
-    saveData();
-
-    // Clear the dragged index
-    draggedIndex = null;
-});
-
-// Function to get the element after which the dragged item should be inserted
 function getDragAfterElement(container, y) {
     const draggableElements = [...container.querySelectorAll('li:not(.dragging)')];
-    return draggableElements.reduce(function(closest, child) {
+    return draggableElements.reduce((closest, child) => {
         const box = child.getBoundingClientRect();
         const offset = y - box.top - box.height / 2;
-        if (offset > 0 && offset < closest.offset) {
+        if (offset < 0 && offset > closest.offset) {
             return { offset: offset, element: child };
         } else {
             return closest;
@@ -193,25 +174,27 @@ function getDragAfterElement(container, y) {
     }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
+todoList.addEventListener('dragend', function(event) {
+    event.preventDefault();
+    dragItem.style.display = 'flex';
+    dragItem = null;
+});
 
 // Initial filtering of the todo list
 filterTodoList('all');
 
 // Function to update the items left count
-function  updateItemsCount(){
-    let total = 0
-    todos.forEach(function(todoItem){
-        if(todoItem.completed===false){
-            total++;
-        }
-    })
-    itemsLeftButton.textContent = `${total} items left`;
+function updateItemsLeftCount() {
+    const todoItems = document.querySelectorAll('.list > li:not(#lower-div)');
+    const itemsLeftButton = document.getElementById('items-left');
+    const itemsLeft = Array.from(todoItems).filter(item => !item.classList.contains('completed')).length;
+    itemsLeftButton.textContent = `${itemsLeft} items left`;
 }
 
 // Add event listener for the new todo input
 newTodoInput.addEventListener('keydown', function (event) {
     if (event.key === 'Enter' && newTodoInput.value.trim() !== '') {
-      //event.preventDefault();
+      event.preventDefault();
       addTodoItem(newTodoInput.value.trim());
       newTodoInput.value = '';
     }
@@ -225,21 +208,4 @@ newTodoInput.addEventListener('keydown', function (event) {
       newTodoInput.value = '';
     }
   });
-
-// Get all the filter buttons
-// Add click event listener to each filter button
-for(let i=0; i<filterButtons.length; i++){
-    button = filterButtons[i]
-    button.addEventListener('click', (e) => {
-        // Remove blue color from all filter buttons
-        console.log(button.getAttribute("id"))
-        for(let j=0; j<filterButtons.length; j++){
-            btn = filterButtons[j];
-            btn.style.color = "";
-        }
-        // Set blue color to the clicked filter button
-        e.target.style.color = 'hsl(220, 98%, 61%)';
-    })
-}
-
   
