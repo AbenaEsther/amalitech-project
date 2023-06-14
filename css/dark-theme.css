@@ -108,11 +108,6 @@ li input:hover{
   color: hsl(237, 14%, 26%);
 }
 
-body{
-  height: 100vh;
-  overflow: hidden;
-}
-
 /* #all, #all-2{ */
   /* color: hsl(220, 98%, 61%); */
 /* } */
@@ -257,6 +252,8 @@ li:hover .delete{
 
 body{
   background-color: hsl(235, 21%, 11%);
+  height: 100vh;
+  overflow: hidden;
 }                                          
 
 @media screen and (min-width:1440px) {
@@ -306,8 +303,11 @@ body{
   }
   
   .footer{
+    position: relative;
     padding-top: 30px;
     font-size: 16px;
+    align-items: center;
+
   }
 
   form{

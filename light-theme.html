@@ -11,83 +11,43 @@
 </head>
 <body background="" data-theme="light">
     <div class="upper-half">
-    <div class="main-container">
-        <div class="big-container">
-        <div class="todo-bar">
-            <h1>TODO</h1>
-            <button id="theme-toggle"> <img id="theme-toggle-icon" src = "./icon-moon.svg" alt="moon icon">
-            </button>
-    
-        </div>
-        
-        <form action="">
-            <input checked="false" type="checkbox" class="form-checkbox">
-            <input type="text" placeholder="Create a new todo" class="textbox">
-        </form>
-        <div class="space"></div>
-    </div>
-        
-        <div class="container">
-        <ul class="list" id="todo-list">
-            <li class="first-list li" id="li">
-                <input checked="false" type="checkbox">
-                <span>Complete online JavaScript course</span>
-               <button class="delete"><img src="images/icon-cross.svg" alt="cross icon"></button> 
-            </li>
-
-            <li class="li">
-                <input checked="false" type="checkbox">
-                <span>Jog around the park 3x</span>
-                <button class="delete"><img src="images/icon-cross.svg" alt="cross icon"></button>
-            </li>
-
-            <li class="li">
-                <input checked="false" type="checkbox">
-                <span>10 minutes meditation</span>
-                <button class="delete"><img src="images/icon-cross.svg" alt="cross icon"></button>
-            </li>
-
-            <li class="li">
-                <input checked="false" type="checkbox">
-                <span>read for 1 hour</span>
-                <button class="delete"><img src="images/icon-cross.svg" alt="cross icon"></button>
-            </li>
-
-            <li class="li">
-                <input checked="false" type="checkbox">
-                <span>Pick up groceries</span>
-                <button class="delete"><img src="images/icon-cross.svg" alt="cross icon"></button>
-            </li>
-
-            <li class="li">
-                <input checked="false" type="checkbox">
-                <span>Complete Todo App on Frontend Mentor</span>
-                <button class="delete"><img src="images/icon-cross.svg" alt="cross icon"></button>
-            </li>
-
-            <li class="last-li">
-                <button>5 items left</button>
-                <div id="inner-button">
-                <button class="all">All</button>
-                <button>Active</button>
-                <button>Completed</button>
+        <div class="main-container">
+            <div class="big-container">
+                <div class="todo-bar">
+                    <h1>TODO</h1>
+                    <button id="theme-toggle"> <img id="theme-toggle-icon" src = "./icon-moon.svg" alt="moon icon">
+                    </button>
                 </div>
-                <button>Clear Completed</button>
-            </li>
-
-            <li id="lower-div">
-                <button class="all">All</button>
-                <button>Active</button>
-                <button>Completed</button>
-            </li>
-
-            <div class="footer">
-                <p>Drag and drop to reorder</p>
+                <form action="">
+                    <input checked="false" type="checkbox" class="form-checkbox">
+                    <input type="text" placeholder="Create a new todo" class="textbox">
+                </form>
+                <div class="space"></div>
             </div>
-        </ul>
+            <div class="container">
+                <ul class="list" id="todo-list">
+                </ul>
+                <ul id="second-ul">
+                    <li class="last-li">
+                        <button id="items-left">items left</button>
+                        <div id="inner-button">
+                            <button class="all">All</button>
+                            <button>Active</button>
+                            <button>Completed</button>
+                        </div>
+                        <button>Clear Completed</button>
+                    </li>
+                    <li id="lower-div">
+                        <button class="all">All</button>
+                        <button>Active</button>
+                        <button>Completed</button>
+                    </li>
+                    <div class="footer">
+                        <p>Drag and drop to reorder</p>
+                    </div>
+             </ul>
+        </div>
     </div>
-</div>  
-
 <script src="js/todo.js"></script>
 </body>
 </html>
